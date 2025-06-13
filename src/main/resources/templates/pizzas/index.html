@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza</title>
+     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
+</head>
+</head>
+
+<body>
+<main class="container">
+    <section class="title row">
+        <div class="col-12">
+            <h1 class="text-center">Le nostre Pizze</h1>
+        </div>
+    </section>
+<section class="pizza">
+    <table class="table table-hover" th:if="${pizzas.size > 0}">
+        <thead>
+            <tr>
+                <th class="scope">Nome</th>
+                <th class="scope">Descrizione</th>
+                <th class="scope">Foto</th>
+                <th class="scope">Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+            <td th:text="${pizza.name}"></td>
+            <td th:text="${pizza.description}"></td>
+            <td><img th:src="${pizza.pic}" alt="Immagine" style="width: 100px;"></td>
+            <td th:text="${#numbers.formatDecimal(pizza.price, 2, 'POINT', '', ' €')}"></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</main>
+</body>
+
+</html>
