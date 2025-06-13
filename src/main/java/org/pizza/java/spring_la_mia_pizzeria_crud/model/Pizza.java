@@ -14,19 +14,19 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "pizza")
+@Table (name = "pizze")
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column (name="Nome")
+    @Column (name="nome")
     private String name;
-    @Column (name= "Descrizione")
+    @Column (name= "descrizione")
     private String description;
-    @Column (name="Foto")
+    @Column (name="foto_url")
     private String pic;
-    @Column (name="Prezzo")
+    @Column (name="prezzo")
     private BigDecimal price;
 
 
