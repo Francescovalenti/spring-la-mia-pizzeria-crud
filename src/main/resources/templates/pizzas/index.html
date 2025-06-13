@@ -32,7 +32,8 @@
             <td th:text="${pizza.name}"></td>
             <td th:text="${pizza.description}"></td>
             <td><img th:src="${pizza.pic}" alt="Immagine" style="width: 100px;"></td>
-            <td th:text="${#numbers.formatDecimal(pizza.price, 2, 'POINT', '', ' €')}"></td>
+            
+            <td th:text="${#numbers.formatCurrency(pizza.price)}">€ 0.00</td>
             </tr>
         </tbody>
     </table>
