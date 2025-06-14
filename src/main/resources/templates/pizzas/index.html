@@ -12,16 +12,18 @@
 </head>
 
 <body >
-  
+  <header>
+     <nav th:replace="~{fragments/navbar :: navbar('Le Pizze')}" />
+  </header>
 <main class="container" >
     <section class="title row">
         <div class="col-12">
             <h1 class="text-center"><span class="badge text-bg-warning">Le Nostre Pizze</span></h1>
         </div>
     </section>
-<section class="pizza">
+<section class="pizza menu-box mt-4 shadow-lg">
 
-    <table class="table table-hover text-bg-warning p-3">
+    <table class="table table-striped text-bg-warning p-3">
         <thead>
             <tr>
                 <th class="scope">Nome</th>
@@ -30,11 +32,11 @@
                 <th class="scope">Prezzo</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-bg-warning p-3 ">
             <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
             <td th:text="${pizza.name}"></td>
             <td th:text="${pizza.description}"></td>
-            <td><img th:src="${pizza.pic}" alt="Immagine" style="width: 30px;"></td>
+            <td><img th:src="${pizza.pic}"  style="width: 80px;"></td>
             
             <td th:text="${#numbers.formatCurrency(pizza.price)}">€ 0.00</td>
             </tr>
