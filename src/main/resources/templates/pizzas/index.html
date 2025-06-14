@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza</title>
      <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
+     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 </head>
 
-<body>
-<main class="container">
+<body >
+    <div class="alert alert-success text-center mt-3" role="alert">
+  Bootstrap funziona! 🎉
+</div>
+<main class="container" >
     <section class="title row">
         <div class="col-12">
-            <h1 class="text-center">Le nostre Pizze</h1>
+            <h1 class="text-center"><span class="badge text-bg-warning">Le Nostre Pizze</span></h1>
         </div>
     </section>
 <section class="pizza">
@@ -31,7 +35,7 @@
             <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
             <td th:text="${pizza.name}"></td>
             <td th:text="${pizza.description}"></td>
-            <td><img th:src="${pizza.pic}" alt="Immagine" style="width: 100px;"></td>
+            <td><img th:src="${pizza.pic}" alt="Immagine" style="width: 30px;"></td>
             
             <td th:text="${#numbers.formatCurrency(pizza.price)}">€ 0.00</td>
             </tr>
