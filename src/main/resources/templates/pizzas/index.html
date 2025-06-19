@@ -6,46 +6,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza</title>
-     <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
-     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.6/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 </head>
 
-<body >
-  <header>
-     <nav th:replace="~{fragments/navbar :: navbar('Le Pizze')}" />
-  </header>
-<main class="container" >
-    <section class="title row">
-        <div class="col-12">
-            <h1 class="text-center"><span class="badge text-bg-warning">Le Nostre Pizze</span></h1>
-        </div>
-    </section>
-<section class="pizza menu-box mt-4 shadow-lg">
+<body>
+    <header>
+        <nav th:replace="~{fragments/navbar :: navbar('Le Pizze')}" />
+    </header>
+    <main class="container">
+        <section class="title row">
+            <div class="col-12">
+                <h1 class="text-center"><span class="badge text-bg-warning">Le Nostre Pizze</span></h1>
+            </div>
+        </section>
+        <section class="pizza menu-box mt-4 shadow-lg">
+            <form class="d-flex align-items-end mb-4 col-4  ms-auto" role="search" th:action="@{/pizzas}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Cerca " aria-label="Search"
+                    name="keyword" th:value="${keyword}">
+                <button class="btn btn-warning  " type="submit">Cerca</button>
+            </form>
 
-    <table class="table table-striped text-bg-warning p-3">
-        <thead>
-            <tr>
-                <th class="scope">Nome</th>
-                <th class="scope">Descrizione</th>
-                <th class="scope">Foto</th>
-                <th class="scope">Prezzo</th>
-            </tr>
-        </thead>
-        <tbody class="text-bg-warning p-3 ">
-            <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
-            <td th:text="${pizza.name}"></td>
-            <td th:text="${pizza.description}"></td>
-            <td><img th:src="${pizza.pic}"  style="width: 80px;"></td>
-            
-            <td th:text="${#numbers.formatCurrency(pizza.price)}">€ 0.00</td>
-            </tr>
-        </tbody>
-    </table>
-    
-</section>
+            <table class="table table-striped text-bg-warning p-3">
+                <thead>
+                    <tr>
+                        <th class="scope">Nome</th>
+                        <th class="scope">Descrizione</th>
+                        <th class="scope">Foto</th>
+                        <th class="scope">Prezzo</th>
+                        <td>
 
-</main>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody class="text-bg-warning p-3 ">
+                    <tr th:if="${#lists.isEmpty(pizzas)}">
+                        <td colspan="4" class="text-center text-danger fw-bold">
+                            Nessuna pizza disponibile al momento.
+                        </td>
+                    </tr>
+                    <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+                        <td th:text="${pizza.name}"></td>
+                        <td th:text="${pizza.description}"></td>
+                        <td><img th:src="${pizza.pic}" style="width: 80px;"></td>
+
+                        <td th:text="${#numbers.formatCurrency(pizza.price)}">€ 0.00</td>
+                        <td><a th:href="@{/pizzas/{id}(id=${pizza.id})}" class="btn btn-primary btn-sm">Dettagli</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
 </body>
 
 </html>
