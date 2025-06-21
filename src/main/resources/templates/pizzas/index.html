@@ -33,9 +33,9 @@
 
 
             <form class="d-flex align-items-end mb-4 col-6  ms-auto" role="search" th:action="@{/pizzas}" method="get">
-                <input class="form-control me-2" type="search" placeholder="Cerca " aria-label="Search" name="keyword"
+                <input class="form-control me-2 " type="search" placeholder="Cerca " aria-label="Search" name="keyword"
                     th:value="${keyword}">
-                <button class=" " type="submit">Cerca</button>
+                <button class="btn btn-primary  " type="submit">Cerca</button>
             </form>
 
             <table class="table table-striped text-bg-warning p-3">
