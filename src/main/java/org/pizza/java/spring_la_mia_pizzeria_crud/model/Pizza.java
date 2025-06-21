@@ -31,10 +31,12 @@ public class Pizza {
     private String description;
 
     @Column(name = "foto_url")
+    @NotBlank(message = "immagine è obbligatoria")
     private String pic;
     @NotNull(message = "Il prezzo è obbligatorio")
     @DecimalMin(value = "0.01", message = "Il prezzo deve essere maggiore di zero")
     @Column(name = "prezzo")
+    
     private BigDecimal price;
 
     public Integer getId() {

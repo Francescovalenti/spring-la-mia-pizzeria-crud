@@ -55,12 +55,12 @@ public class PizzaController {
     }
 
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+    public String store(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "pizzas/create";
 
         }
-        pizzaRepository.save(formPizza);
+        pizzaRepository.save(pizza);
 
         return "redirect:/pizzas";
     }
