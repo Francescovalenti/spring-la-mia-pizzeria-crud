@@ -75,7 +75,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Deletion of
-                                                <strong>"[[*{name}]]"</strong></h1>
+                                                <strong>"[[*{name}]]"</strong>
+                                            </h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -88,12 +89,15 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <form th:action="@{/pizzas/delete/{id}(id=*{id})}" method="post" class="d-inline">
-                                                <button type="submit" class="btn btn-danger btn">Delete</button>
+                                            <form th:action="@{/pizzas/delete/{id}(id=*{id})}" method="post"
+                                                class="d-inline">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
 
 
                         </td>
@@ -104,6 +108,8 @@
         </section>
 
     </main>
+
 </body>
+<script th:src="@{/webjars/bootstrap/5.3.6/js/bootstrap.bundle.min.js}"></script>
 
 </html>

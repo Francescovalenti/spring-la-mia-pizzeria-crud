@@ -86,11 +86,9 @@ public class PizzaController {
     }
 
     @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Integer id, Model model) {
-
+    public String delete(@PathVariable("id") Integer id) {
         pizzaRepository.deleteById(id);
 
         return "redirect:/pizzas";
-
     }
 }
