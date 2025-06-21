@@ -1,9 +1,6 @@
 package org.pizza.java.spring_la_mia_pizzeria_crud.model;
 
-
 import java.math.BigDecimal;
-
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,25 +9,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table (name = "pizze")
+@Table(name = "pizze")
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column (name="nome")
+    @NotBlank(message = "Il nome è obbligatorio")
+    @Size(max = 100, message = "Il nome non può superare 100 caratteri")
+    @Column(name = "nome")
     private String name;
-    @Column (name= "descrizione")
+    @NotBlank(message = "La descrizione è obbligatoria")
+    @Size(max = 255, message = "La descrizione non può superare 255 caratteri")
+    @Column(name = "descrizione")
     private String description;
-    @Column (name="foto_url")
+
+    @Column(name = "foto_url")
     private String pic;
-    @Column (name="prezzo")
+    @NotNull(message = "Il prezzo è obbligatorio")
+    @DecimalMin(value = "0.01", message = "Il prezzo deve essere maggiore di zero")
+    @Column(name = "prezzo")
     private BigDecimal price;
-
-
-
 
     public Integer getId() {
         return this.id;
